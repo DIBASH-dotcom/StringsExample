@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        label {
+            font-size: 18px;
+            margin-top: 10px;
+            display: block;
+            color: #555;
+        }
+
+        input {
+            padding: 8px;
+            margin: 10px 0;
+            width: 200px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #result {
+            font-size: 20px;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .underweight {
+            color: blue;
+        }
+
+        .normal {
+            color: green;
+        }
+
+        .overweight {
+            color: yellow;
+        }
+
+        .obese {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Practice Question: BMI Calculator (Body Mass Index)</h1>
+    <p>🔹 Problem:
+        Create a web page where a user enters:
+        
+        Name
+        
+        Height (in centimeters)
+        
+        Weight (in kilograms)
+        
+        Then calculate BMI using this formula:
+        
+        📐 BMI = weight (kg) / (height (m) × height (m))
+        
+        And display the BMI category:
+        
+        🔵 Underweight: BMI < 18.5
+        
+        🟢 Normal: 18.5 – 24.9
+        
+        🟡 Overweight: 25 – 29.9
+        
+        🔴 Obese: 30 or more</p>
+
+    <label>Name</label>
+    <input type="text" id="Name" placeholder="Enter your name">
+
+    <label>Height (in cm)</label>
+    <input type="number" id="Height" min="0" placeholder="Enter your height in centimeters">
+
+    <label>Weight (in kg)</label>
+    <input type="number" id="Weight" placeholder="Enter your weight">
+
+    <button onclick="BMICalculator()">Calculate</button>
+
+    <p id="result"></p>
+
+    <script>
+        function BMICalculator() {
+            const Name = document.getElementById("Name").value;
+            let Height = parseInt(document.getElementById("Height").value);
+            let Weight = parseInt(document.getElementById("Weight").value);
+            const result = document.getElementById("result");
+
+            if (Name === "" || isNaN(Height) || isNaN(Weight) || Height <= 0 || Weight <= 0) {
+                result.innerText = "Please insert valid details";
+                result.className = "";
+                return 0;
+            }
+
+            // Convert height from cm to meters
+            Height = Height / 100;
+
+            // Calculate BMI
+            let BMI = Weight / (Height * Height);
+            let range = "";
+
+            if (BMI < 18.5) {
+                range = "Underweight";
+                result.className = "underweight";
+            } else if (BMI >= 18.5 && BMI <= 24.9) {
+                range = "Normal";
+                result.className = "normal";
+            } else if (BMI >= 25 && BMI <= 29.9) {
+                range = "Overweight";
+                result.className = "overweight";
+            } else {
+                range = "Obese";
+                result.className = "obese";
+            }
+
+            result.innerText = `${Name}, your BMI is ${BMI.toFixed(2)}. You are ${range}.`;
+        }
+    </script>
+</body>
+</html>

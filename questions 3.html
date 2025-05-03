@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recharge Bonus</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f2f5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    h1 {
+      color: #2e8b57;
+    }
+
+    p {
+      text-align: center;
+      max-width: 400px;
+      color: #333;
+    }
+
+    input[type="number"] {
+      padding: 10px;
+      width: 250px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #2e8b57;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #246b45;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+      color: #2e8b57;
+    }
+  </style>
+</head>
+<body>
+  <h1>Online Recharge Bonus System</h1>
+  <p>
+    Ask user how much they want to recharge.
+    <br> ₹100–199: 2% bonus
+    <br> ₹200–499: 5% bonus
+    <br> ₹500+: 10% bonus
+  </p>
+
+  <input type="number" id="recharge" placeholder="Enter amount to recharge">
+  <button onclick="calculateBonus()">Recharge</button>
+  <p id="result"></p>
+
+  <script>
+    function calculateBonus() {
+      const balance = parseInt(document.getElementById("recharge").value);
+      const result = document.getElementById("result");
+
+      if (isNaN(balance) || balance < 0) {
+        result.innerText = "Please enter a valid recharge amount.";
+        return;
+      }
+
+      let bonus = 0;
+
+      if (balance >= 100 && balance <= 199) {
+        bonus = balance * 0.02;
+      } else if (balance >= 200 && balance <= 499) {
+        bonus = balance * 0.05;
+      } else if (balance >= 500) {
+        bonus = balance * 0.10;
+      }
+
+      const total = balance + bonus;
+      result.innerText = `Your total balance with bonus is ₹${total.toFixed(2)} (Bonus: ₹${bonus.toFixed(2)})`;
+    }
+  </script>
+</body>
+</html>

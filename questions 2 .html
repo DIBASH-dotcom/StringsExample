@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Electricity Bill Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 16px;
+      width: 250px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Electricity Bill Calculator</h1>
+  <p>Enter the number of electricity units consumed:</p>
+  <input type="number" id="unitInput" placeholder="Enter units">
+  <br />
+  <button onclick="calculateBill()">Calculate Bill</button>
+  <p id="result"></p>
+
+  <script>
+    function calculateBill() {
+      const units = parseInt(document.getElementById("unitInput").value);
+      const result = document.getElementById("result");
+
+      let bill = 0;
+
+      if (units <= 20) {
+        bill = 0;
+      } else if (units <= 50) {
+        bill = (units - 20) * 5;
+      } else if (units <= 100) { 
+        bill = (30 * 5) + (units - 50) * 8;
+      } else {
+        bill = (30 * 5) + (50 * 8) + (units - 100) * 10;
+      }
+
+      result.innerText = `Total Electricity Bill: Rs. ${bill}`;
+    }
+  </script>
+</body>
+</html>

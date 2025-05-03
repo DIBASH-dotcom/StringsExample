@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Simple Interest Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f1f1f1;
+    }
+
+    h1 {
+      color: #2e8b57;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    input {
+      padding: 8px;
+      width: 100%;
+      margin-top: 5px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #2e8b57;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #246b45;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Simple Interest Calculator</h1>
+  <p>
+    Enter the following details to calculate simple interest:<br>
+    Formula: <b>SI = (P × R × T) / 100</b>
+  </p>
+
+  <label>Name</label>
+  <input type="text" id="Name" placeholder="Enter your name" />
+
+  <label>Principal Amount (₹)</label>
+  <input type="number" id="Principal" placeholder="Enter principal amount" />
+
+  <label>Interest Rate (%)</label>
+  <input type="number" id="Interest" placeholder="Enter interest rate" />
+
+  <label>Time (Years)</label>
+  <input type="number" id="Time" placeholder="Enter time in years" />
+
+  <button onclick="calculateSimpleInterest()">Calculate Simple Interest</button>
+
+  <p id="result"></p>
+
+  <script>
+    function calculateSimpleInterest() {
+      const name = document.getElementById("Name").value;
+      const principal = parseFloat(document.getElementById("Principal").value);
+      const rate = parseFloat(document.getElementById("Interest").value);
+      const time = parseFloat(document.getElementById("Time").value);
+      const result = document.getElementById("result");
+
+      if (
+        name === "" ||
+        isNaN(principal) || principal < 0 ||
+        isNaN(rate) || rate < 0 ||
+        isNaN(time) || time < 0
+      ) {
+        result.innerText = "Please enter valid details.";
+        return;
+      }
+
+      const si = (principal * rate * time) / 100;
+      const totalAmount = si + principal;
+
+      result.innerHTML = `
+        ${name}, your simple interest is ₹${si.toFixed(2)}<br>
+         Total amount after interest is ₹${totalAmount.toFixed(2)}
+      `;
+    }
+  </script>
+</body>
+</html>

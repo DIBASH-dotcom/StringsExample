@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nepali Calendar Month Days</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f4f8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 50px;
+    }
+
+    .container {
+      background: white;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+      font-size: 24px;
+      color: #333;
+    }
+
+    p {
+      color: #666;
+      margin: 10px 0 20px;
+    }
+
+    input[type="number"] {
+      padding: 10px;
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-bottom: 15px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    #result {
+      margin-top: 15px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #2c3e50;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Nepali Calendar Month Days</h1>
+    <p>User inputs month number (1–12)<br>
+    ➤ Print how many days are in that Nepali month.</p>
+
+    <input type="number" id="monthInput" min="1" max="12" placeholder="Enter month number (1–12)">
+    <button onclick="daysInMonth()">Check Days</button>
+    <p id="result"></p>
+  </div>
+
+  <script>
+    const nepaliMonths = {
+      1: { name: "Baisakh", days: 31 },
+      2: { name: "Jestha", days: 31 },
+      3: { name: "Ashadh", days: 32 },
+      4: { name: "Shrawan", days: 31 },
+      5: { name: "Bhadra", days: 31 },
+      6: { name: "Ashwin", days: 30 },
+      7: { name: "Kartik", days: 30 },
+      8: { name: "Mangsir", days: 29 },
+      9: { name: "Poush", days: 29 },
+      10: { name: "Magh", days: 30 },
+      11: { name: "Falgun", days: 30 },
+      12: { name: "Chaitra", days: 30 }
+    };
+
+    function daysInMonth() {
+      const input = document.getElementById("monthInput").value;
+      const monthNum = parseInt(input);
+      const result = document.getElementById("result");
+
+      if (nepaliMonths[monthNum]) {
+        const month = nepaliMonths[monthNum];
+        result.innerText = `${month.name} has ${month.days} days.`;
+      } else {
+        result.innerText = "Invalid month number. Please enter between 1 and 12.";
+      }
+    }
+  </script>
+</body>
+</html>

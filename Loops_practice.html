@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Types of Loops</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding: 20px;
+    }
+    h1 {
+      color: #333;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background-color: white;
+    }
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+    th, td {
+      padding: 12px;
+      text-align: left;
+    }
+    th {
+      background-color: #333;
+      color: white;
+    }
+    .loop-desc {
+      background-color: #fff;
+      padding: 15px;
+      margin-top: 30px;
+      border-left: 5px solid #007BFF;
+    }
+    #output {
+      margin-top: 30px;
+      font-size: 18px;
+      color: green;
+      background-color: #e9ffe9;
+      padding: 10px;
+      border: 1px solid #b2ffb2;
+    }
+    code {
+      background-color: #f0f0f0;
+      padding: 2px 5px;
+      font-family: monospace;
+    }
+    .highlight {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Types of Loops</h1>
+
+  <table>
+    <tr>
+      <th>Loop Type</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <td>for loop</td>
+      <td>Loops a block of code a specific number of times</td>
+    </tr>
+    <tr>
+      <td>for...in loop</td>
+      <td>Loops through the keys of an object</td>
+    </tr>
+    <tr>
+      <td>for...of loop</td>
+      <td>Loops through the values of an iterable object (like an array)</td>
+    </tr>
+    <tr>
+      <td>while loop</td>
+      <td>Loops while a specific condition is true. <span class="highlight">Note: The while loop does not support <strong>else if</strong>, but it supports <strong>if</strong> statements.</span></td>
+    </tr>
+    <tr>
+      <td>do...while loop</td>
+      <td>Runs at least once, then continues while the condition is true</td>
+    </tr>
+    <tr>
+      <td>for loop (Example)</td>
+      <td>
+        <code>
+          for (let i = 0; i &lt; 5; i++) {<br>
+            &nbsp;&nbsp;console.log("hello", i + 1);<br>
+          }
+        </code>
+      </td>
+    </tr>
+  </table>
+
+  <div class="loop-desc">
+    <h3>For Loop Explanation</h3>
+    <p>
+      The syntax of a <strong>for</strong> loop looks like this:
+    </p>
+    <pre><code>for (statement1; statement2; statement3) {
+    // code to be executed
+}</code></pre>
+    <ul>
+      <li><strong>statement1</strong> is executed once before the loop starts (usually initialization).</li>
+      <li><strong>statement2</strong> is the condition checked before each loop iteration.</li>
+      <li><strong>statement3</strong> is executed after each loop iteration (usually used for updating).</li>
+    </ul>
+  </div>
+
+  <div id="output"><strong>Loop Output:</strong><br></div>
+
+  <script>
+    let result = "";
+    for (let i = 0; i < 5; i++) {
+      result += "hello " + (i + 1) + "<br>";
+    }
+    document.getElementById("output").innerHTML += result;
+
+    const person = {
+        name: "Dibash",
+        caste: "Magar",
+        role: "student"
+    }
+
+    for (const key in person) {
+        console.log(key);
+    }
+
+    const name = "DIBASH";
+
+    for (const char of name) {
+        console.log(char);
+    }
+
+    let j = 10;
+    while (j < 11) {
+        console.log("print yes");
+        // The "if" statement works here
+        if (j === 10) {
+            console.log("condition met");
+            j++;  // Update j to break the loop after one iteration
+        }
+    }
+  </script>
+
+</body>
+</html>
